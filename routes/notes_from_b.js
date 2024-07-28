@@ -21,8 +21,10 @@ router.get('/', async (req, res) => {
     //console.log(note);
     res.json(note);
     }catch(err) {
+     log("error");
      client.close();
     } finally {
+    log("error");
      client.close();
     };
 })
