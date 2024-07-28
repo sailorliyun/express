@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
     //console.log(note);
     res.json(note);
     }catch(err) {
-     logger.debug('error!');
+     logger.debug(err);
      client.close();
     } finally {
      logger.debug('close client!');
