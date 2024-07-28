@@ -11,6 +11,7 @@ const client = new MongoClient(uri);
 router.use(cors());
 
 router.get('/', async (req, res) => {
+    try {
     // データベース、コレクションを指定
     const database = client.db('notes');
     const notes = database.collection('notes');
@@ -19,6 +20,11 @@ router.get('/', async (req, res) => {
     const note = await notes.find({}).toArray();
     //console.log(note);
     res.json(note);
+    }catch(err) {
+     client.close();
+    } finally {
+     client.close();
+    };
 })
 
 module.exports = router;
