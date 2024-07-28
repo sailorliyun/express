@@ -10,9 +10,14 @@ const client = new MongoClient(uri);
 // corsミドルウェアを使用
 router.use(cors());
 
+const log4js = require('log4js')
+const logger = log4js.getLogger();
+logger.level = 'debug';
+
 router.get('/', async (req, res) => {
     try {
     // データベース、コレクションを指定
+    logger.debug('get data start!');
     const database = client.db('notes');
     const notes = database.collection('notes');
 
@@ -21,10 +26,10 @@ router.get('/', async (req, res) => {
     //console.log(note);
     res.json(note);
     }catch(err) {
-     log("error");
+     logger.debug('error!');
      client.close();
     } finally {
-    log("error");
+     logger.debug('close client!');
      client.close();
     };
 })
