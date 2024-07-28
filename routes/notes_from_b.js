@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 
     // 全てのドキュメントを取得
     const note = await notes.find({}).toArray();
-    console.log(note);
+    //console.log(note);
     res.json(note);
 })
 
